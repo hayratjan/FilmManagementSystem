@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block title %}
+    首页
+{% endblock %}
+{% block body %}
+    {% include 'index/navbar.html' %}
+    <div class="container">
+        <div class="row m-0">
+            <div class="col-2"></div>
+            <div class="col-8">
+                <a href="/" class="btn btn-primary m-2"><i class="bi bi-arrow-left"></i>返回</a>
+                <div class="card m-2">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <a>
+                                <img src="{{ data.photo }}" class="img-fluid rounded-start"
+                                     alt="{{ data.photo }}">
+                            </a>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body" style="height: 50%">
+                                <a
+                                        class="h5 text-decoration-none card-title">{{ data.name.name }}</a>
+                                <p class="card-text" style="font-size: 12px">{{ data.person }}</p>
+                                <p class="card-text" style="font-size: 14px"><small
+                                        class="text-muted">评分：{{ data.grade }}&emsp;{{ data.numOfGrade }}</small></p>
+                                <a href="{% url 'star' %}?film_id={{ data.pk }}"
+                                   class=" text-decoration-none align-self-end"
+                                   style="height:100%;font-size: 14px;color: #6c757d;margin-bottom: 10px"><i
+                                        class="bi bi-star"
+                                        style="font-size: 14px;color: #5c636a"></i>
+                                    收藏</a>
+                                <p class="text-end" style="height:100%;font-size: 14px;color: #6c757d;margin-bottom: 10px"> </p>
+                                <p class="mt-1 align-self-end">
+                                    🔗豆瓣链接： <a class="text-decoration-none text-success"
+                                                  href="{{ data.link }}">{{ data.link }}</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-2"></div>
+        </div>
+    </div>
+{% endblock %}
+

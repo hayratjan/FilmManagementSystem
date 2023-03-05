@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% block title %}
+    收藏
+{% endblock %}
+{% block body %}
+    {% include 'index/navbar.html' %}
+    <div class="container">
+        <div class="row">
+            {% for data in data_list %}
+
+
+
+                <div class="col-2">
+                </div>
+                <div class="col-8">
+                    {#            <a href="/" class="btn btn-primary m-2"><i class="bi bi-arrow-left"></i>返回</a>#}
+                    <div class="card m-2">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <a>
+                                    <img src="{{ data.name.photo }}" class="img-fluid rounded-start"
+                                         alt="{{ data.name.photo }}">
+                                </a>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body" style="height: 50%">
+                                    <a
+                                            class="h3 text-decoration-none card-title">{{ data.name.name }}</a>
+                                    <p class="card-text mt-3" style="font-size: 16px">{{ data.name.person }}</p>
+                                    <p class="card-text" style="font-size: 18px"><small
+                                            class="text-muted">评分：{{ data.name.grade }}&emsp;{{ data.name.numOfGrade }}</small>
+                                    </p>
+                                    <a href="{% url 'star' %}?del_id={{ data.pk }}"
+                                       class="text-start text-decoration-none"
+                                       style="height:100%;font-size: 20px;color: #ffc107;margin-bottom: 10px"><i
+                                            class="bi bi-star"
+                                    ></i>
+                                        收藏</a>
+                                    <p class="text-end" style="height:80%;font-size: 14px;color: #6c757d;margin-bottom: 10px"> </p>
+                                    <p class="mt-1">
+                                        🔗豆瓣链接： <a class="text-decoration-none text-success"
+                                                      href="{{ data.name.link }}">{{ data.name.link }}</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-2">
+
+                </div>
+            {% empty %}
+                <div class="col-12 text-center m-5">
+
+                    <div class="alert alert-warning" role="alert">
+                        您没有收藏！
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

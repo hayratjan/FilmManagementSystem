@@ -1,0 +1,26 @@
+{% load static %}
+<nav class="navbar bg-body-tertiary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/">
+            <img src="{% static 'logo.svg' %}" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+            我的电影
+        </a>
+
+        <form class="d-flex" role="search" method="get" action="/">
+            <input name="kw" class="form-control me-2" type="search" placeholder="搜索" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit"><i class="bi bi-search"></i></button>
+        </form>
+        <div class="dropdown">
+            <img class="img-thumbnail dropdown-toggle" type="button"
+                 src="/{{ request.session.name.photo }}"
+                 height="30px" width="30px"
+                 data-bs-toggle="dropdown"
+                 aria-expanded="false">
+            <ul class="dropdown-menu" style="left: -130px">
+                <li><a class="dropdown-item" href="{% url 'star' %}">我的收藏</a></li>
+                <li><a class="dropdown-item" href="{% url 'password_update' %}">修改密码</a></li>
+                <li><a class="dropdown-item" href="{% url 'logout' %}">退出</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
